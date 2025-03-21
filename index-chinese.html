@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stepperiders - Mongolian Wilderness Tours</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <a href="#home" class="logo">Stepperiders</a>
+
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#tours">我们的旅行</a></li>
+            <li><a href="#bikes">我们的摩托车</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#contact">联系我们</a></li>
+            <li class="lang-nav-item"><a href="index.html">EN</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="home">
+        <div class="hero">
+            <h1>欢迎来到蒙古荒野</h1>
+            <p>纵情骑行，征服未知，体验前所未有的蒙古之旅。</p>
+            <button onclick="scrollToSection('about')">了解更多</button>
+        </div>
+    </header>
+
+    <!-- Improved About Us Section -->
+    <section id="about" class="section">
+        <div class="about-container">
+            <h2>关于我们</h2>
+            
+            <p>在 Stepperiders，我们提供无与伦比的摩托车之旅，穿越蒙古令人惊叹的自然风光。这不仅仅是一场骑行，而是一场真实的冒险。在荒野中自由驰骋的同时，我们的后勤团队会确保你拥有一次难忘的旅程所需的一切。</p>
+            
+            <h3>为什么选择 Stepperiders？</h3>
+            <ul class="feature-list">
+                <li><strong>自由骑行，尽情探索</strong> – 你掌控旅程，自由驰骋于无尽草原、广袤沙漠和巍峨山脉。我们的团队在后方支持，保障你的独立性和安全。</li>
+                
+                <li><strong>全程保障 </strong> – 无论是快速修车、营地美食，还是与游牧家庭沟通，我们的机械师、厨师和翻译员都会陪伴你左右。</li>
+                
+                <li><strong>地道蒙古体验</strong> –  住在传统的蒙古包中，在星空下用餐，沉浸在传奇般的蒙古待客之道中。本地团队将带你深入了解游牧文化的精髓。</li>
+                
+                <li><strong>令人惊叹的自然风光</strong> – 从戈壁沙漠的沙丘到阿尔泰山脉的原始山地，每一次转弯都是一幅新的壮丽景象。自由与辽阔之感无与伦比。</li>
+            </ul>
+            
+            <h3>为什么选择蒙古？</h3>
+            
+            <div class="mongolia-section">
+                <div class="mongolia-text">
+                    <p>蒙古是探险者最后的净土之一。这里有无尽的越野路线、原始的自然风貌，以及丰富的游牧文化，是摩托骑士梦寐以求的圣地。</p>
+                    
+                    <ul class="mongolia-features">
+                        <li><span class="icon"></span> 广袤无垠的原野</li>
+                        <li><span class="icon"></span> 古老的游牧传统</li>
+                        <li><span class="icon"></span> 无尽的越野冒险</li>
+                        <li><span class="icon"></span> 从沙漠到高山的多样地形</li>
+                    </ul>
+                    
+                    <p>这里没有围栏，没有拥堵——只有自由的道路、奔腾的野马，以及呼唤你的冒险之旅。</p>
+                </div>
+                <div class="mongolia-image">
+                    <img src="mongolia.jpg" alt="Mongolian landscape">
+                </div>
+            </div>
+                
+            <p class="conclusion">如果你正在寻找一段狂野而难忘的旅程，Stepperiders 将带你开启一场真正的蒙古越野探险。</p>
+            
+            <div class="tagline-banner">
+                <div class="tagline-content">
+                    <div class="tagline-box"><span>狂野骑行</span></div>
+                    <div class="tagline-box"><span>自由探索</span></div>
+                    <div class="tagline-box"><span>活出冒险</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tours" class="section">
+        <div class="container">
+            <h2>我们的旅行</h2>
+            <div class="tour-container">
+                <div class="tour-box">
+                    <img src="gobi.jpg" alt="Tour 1">
+                    <h3>沙漠与山地之旅</h3>
+                    <div class="tour-route">
+                        <h4>路线概览</h4>
+                        <div class="tour-day"><strong>第一天:</strong> 乌兰巴托 → Elsen Tasarkhai → Tsetserleg（270公里）</div>
+                        <div class="tour-day"><strong>第二天:</strong> Tsetserleg → 特日汗湖 → Khorgo（200公里）</div>
+                        <div class="tour-day"><strong>第三天:</strong> Khorgo → 哈特嘎勒（呼布苏古尔湖）（300公里）</div>
+                        <div class="tour-day"><strong>第四天:</strong> 哈特嘎勒（休息/观光）</div>
+                        <div class="tour-day"><strong>第五天:</strong> 哈特嘎勒 → 哈恩赫（北岸）（150公里）</div>
+                        <div class="tour-day"><strong>第六天:</strong> 哈恩赫 → Renchinlkhumbe → 乌兰乌勒（250公里）</div>
+                        <div class="tour-day"><strong>第七天:</strong> 乌兰乌勒 → 布尔干省（270公里）</div>
+                        <div class="tour-day"><strong>第八天:</strong> 布尔干 → 胡斯台国家公园（250公里）</div>
+                        <div class="tour-day"><strong>第九天:</strong> 胡斯台国家公园 → 乌兰巴托（100公里）</div>
+                    </div>
+                    <a href="tour1-chinese.html" class="btn">了解更多</a>
+                </div>
+                
+                <div class="tour-box">
+                    <img src="lake.jpg" alt="Tour 2">
+                    <h3>游牧冒险之旅</h3>
+                    <div class="tour-route">
+                        <h4>路线概览</h4>
+                        <div class="tour-day"><strong>第一天:</strong> Zorgol Khairkhan 山 → Baga Gazriin Chuluu（220公里）</div>
+                        <div class="tour-day"><strong>第二天:</strong> Tsagaan Suvarga（230公里）</div>
+                        <div class="tour-day"><strong>第三天:</strong> 3 Camels Lodge （240公里）</div>
+                        <div class="tour-day"><strong>第四天:</strong> Yolyn Am – Gobi Gurvan Saikhan（140公里）</div>
+                        <div class="tour-day"><strong>第五天:</strong> Ongiin Khiid (200 公里)</div>
+                        <div class="tour-day"><strong>第六天:</strong> Bat-Ulzii Soum – Ulaan Tsutgalan (260公里)</div>
+                        <div class="tour-day"><strong>第七天:</strong> Kharkhorin – Elsen Tasarkhai (210公里)</div>
+                        <div class="tour-day"><strong>第八天:</strong> Khustai National Park – Mongol Nomadic (180公里)</div>
+                        <div class="tour-day"><strong>第九天:</strong> 乌兰巴托（50公里）</div>
+                    </div>
+                    <a href="tour2-chinese.html" class="btn">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Our Bikes Section -->
+      <section id="bikes" class="section">
+        <div class="container">
+            <h2>我们的摩托车</h2>
+            <div class="bikes-container">
+                <!-- Bike Gallery and Info -->
+                <div class="bike-showcase">
+                    <!-- Bike Gallery -->
+                    <div class="bike-gallery">
+                        <div class="bike-gallery-container">
+                            <div class="bike-slide active">
+                                <img src="moto/1.jpeg" alt="Cross 125 X - Side View" class="bike-image">
+                            </div>
+                            <div class="bike-slide">
+                                <img src="moto/2.jpeg" alt="Cross 125 X - Angle View" class="bike-image">
+                            </div>
+                            <div class="bike-slide">
+                                <img src="moto/3.jpeg" alt="Cross 125 X - Dashboard View" class="bike-image">
+                            </div>
+                            <div class="bike-slide">
+                                <img src="moto/4.jpeg" alt="Cross 125 X - Side Angle View" class="bike-image">
+                            </div>
+                            <div class="bike-slide">
+                                <img src="moto/5.jpeg" alt="Cross 125 X - Front View" class="bike-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Gallery Navigation -->
+                        <div class="gallery-nav">
+                            <button class="prev-btn" onclick="changeSlide(-1)">❮</button>
+                            <div class="gallery-indicators">
+                                <span class="indicator active" onclick="setSlide(0)"></span>
+                                <span class="indicator" onclick="setSlide(1)"></span>
+                                <span class="indicator" onclick="setSlide(2)"></span>
+                                <span class="indicator" onclick="setSlide(3)"></span>
+                                <span class="indicator" onclick="setSlide(4)"></span>
+                            </div>
+                            <button class="next-btn" onclick="changeSlide(1)">❯</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bike Info -->
+                    <div class="bike-info">
+                        <h3>JL125-12 CROSS 125 X</h3>
+                        
+                        <div class="specs-container">
+                            <div class="specs-section">
+                                <h4> 发动机参数</h4>
+                                <ul class="specs-list">
+                                    <li><strong>类型:</strong> 风冷，四冲程，顶置凸轮轴</li>
+                                    <li><strong>最大功率:</strong> 7.5千瓦（8000转/分钟</li>
+                                    <li><strong>最大扭矩:</strong> 10.5牛·米（5200转/分钟</li>
+                                    <li><strong>启动系统:</strong> 电动 / 脚踏</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="specs-section">
+                                <h4>尺寸与重量</h4>
+                                <ul class="specs-list">
+                                    <li><strong>总长度:</strong> 1920毫米</li>
+                                    <li><strong>总高度:</strong> 1150毫米</li>
+                                    <li><strong>总宽度:</strong> 720毫米</li>
+                                    <li><strong>车重:</strong> 106公斤</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="specs-section">
+                                <h4>制动系统与轮胎</h4>
+                                <ul class="specs-list">
+                                    <li><strong>前刹车:</strong> 碟刹</li>
+                                    <li><strong>后刹车:</strong> 鼓刹</li>
+                                    <li><strong>轮胎尺寸:</strong> 前18寸 / 后16寸</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="specs-section">
+                                <h4>油箱容量</h4>
+                                <ul class="specs-list">
+                                    <li><strong>油箱体积:</strong> 9升</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bike-cta">
+                            <a href="#contact" class="btn" onclick="scrollToSection('contact')">咨询这辆摩托车</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>画廊</h2>
+            <div class="gallery-container">
+                <img src="horse.jpg" alt="Mongolian horses">
+                <img src="malchin.jpg" alt="Mongolian herder">
+                <img src="gobi.jpg" alt="Mongolian mountains">
+                <img src="sky.jpg" alt="Mongolian sky">
+                <img src="temee.jpg" alt="Camels">
+                <img src="tal.jpg" alt="Steppe landscape">
+                <img src="uul.jpg" alt="Mountain landscape">
+                <img src="burged.jpg" alt="Eagle">
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="footer-container">
+            <!-- Company Information (Left) -->
+            <div class="footer-company">
+                <div class="footer-logo">Stepperiders</div>
+                <p>体验地道的蒙古荒野之旅，感受前所未有的摩托车冒险。
+                    探险之旅，从这里启程</p>
+                <div class="footer-info">
+                    <div>
+                        <i>📍</i>
+                        <span> 乌兰巴托，苏赫巴托街123号</span>
+                    </div>
+                    <div>
+                        <i>📞</i>
+                        <span>+976 1234 5678</span>
+                    </div>
+                    <div>
+                        <i>📧</i>
+                        <span>info@stepperiders.com</span>
+                    </div>
+                </div>
+            </div>
+            
+             <!-- Social Media Icons (Middle) -->
+             <div class="footer-social">
+                <h3>关注我们</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i> 
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-snapchat-ghost"></i>
+                    </a>
+                </div>
+                <p>通过社交媒体关注我们，了解最新动态、照片和蒙古荒野故事。</p>
+            </div>
+            
+             <!-- Contact Information by Region (Right) -->
+             <div class="footer-contact">
+                <h3>联系我们</h3>
+                <div class="regional-contacts">
+                    <div class="region-contact">
+                        <h4>亚洲地区</h4>
+                        <div class="contact-item">
+                            <i>🇨🇳</i>
+                            <span>微信: 150 1234 5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>📱</i>
+                            <span>+86 150 1234 5678</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>📧</i>
+                            <span>azzayazaya@qq.com</span>
+                        </div>
+                    </div>
+                    
+                    <div class="region-contact">
+                        <h4>欧洲及美国地区</h4>
+                        <div class="contact-item">
+                            <i>🇸🇪</i>
+                            <span>WhatsApp: +46 73 666 7779</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>📱</i>
+                            <span>+46 73 666 7779</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>📧</i>
+                            <span>bilguun.se@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+        
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Add scroll event to change navbar background
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            const logo = document.querySelector('.logo');
+            
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
+        // Variables for bike gallery
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.bike-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+
+        // Function to show a specific slide
+        function showSlide(n) {
+            // Remove active class from all slides and indicators
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // Add active class to current slide and indicator
+            slides[n].classList.add('active');
+            indicators[n].classList.add('active');
+        }
+
+        // Function to change the slide
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Function to set a specific slide
+        function setSlide(n) {
+            currentSlide = n;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slides every 5 seconds
+        let slideInterval = setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        // Pause auto-advance when hovering over the gallery
+        document.querySelector('.bike-gallery')?.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        // Resume auto-advance when mouse leaves
+        document.querySelector('.bike-gallery')?.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 5000);
+        });
+        // Enhanced scrollToSection function to account for fixed header
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        // Get the header height to calculate offset
+        const headerHeight = 70; // Your header height in pixels
+        
+        // Get the position of the section relative to the document
+        const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        
+        // Calculate position with offset
+        const offsetPosition = sectionPosition - headerHeight;
+        
+        // Scroll to the section with smooth behavior
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+    </script>
+</body>
+</html>

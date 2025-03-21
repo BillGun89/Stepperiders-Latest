@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert & Mountain Tour - Stepperiders Mongolia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Tour Detail Page Specific Styles */
+        .tour-detail-header {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('gobi.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .tour-detail-header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+        
+        .tour-detail-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
+        
+        .tour-detail-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .tour-overview {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .tour-overview h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .tour-overview h2:after {
+            margin-left: 0;
+        }
+        
+        .tour-overview p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .tour-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .highlight-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: rgba(41, 128, 185, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+        }
+        
+        .highlight-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .highlight-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        /* Day-by-day Slideshow */
+        .tour-days-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .tour-days-container h2 {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .tour-days-container h2:after {
+            margin-left: 0;
+        }
+        
+        .day-slideshow {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .day-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .day-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .day-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .day-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .day-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .day-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .day-dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .day-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .day-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .day-slide {
+                flex-direction: row;
+            }
+        }
+        
+        .day-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 400px;
+        }
+        
+        .day-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .day-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .day-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .day-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .day-number {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+        
+        .day-title {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+        
+        .day-distance {
+            display: inline-block;
+            background-color: rgba(41, 128, 185, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .day-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .day-activities {
+            list-style: none;
+            padding: 0;
+            margin-top: auto;
+        }
+        
+        .day-activities li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            color: var(--text-light);
+        }
+        
+        .day-activities li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(41, 128, 185, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background-color: rgba(41, 128, 185, 0.05);
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .booking-section h2 {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        
+        .booking-cta {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: 20px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .booking-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <a href="index.html" class="logo">Stepperiders</a>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#tours">Our Tours</a></li>
+            <li><a href="index.html#bikes">Our Bikes</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li class="lang-nav-item"><a href="chinese.html">中文</a></li>
+        </ul>
+    </nav>
+
+    <!-- Tour Detail Header -->
+    <header class="tour-detail-header">
+        <div>
+            <h1>Desert & Mountain Tour</h1>
+            <p>Experience the breathtaking landscapes of Mongolia from desert dunes to mountain lakes</p>
+        </div>
+    </header>
+
+    <div class="tour-detail-container">
+        <!-- Tour Overview -->
+        <section class="tour-overview">
+            <h2>Tour Overview</h2>
+            <p>Our Desert & Mountain Tour takes you on an unforgettable journey through the diverse landscapes of Mongolia. From the vast steppes near Ulaanbaatar to the crystal-clear waters of Khuvsgul Lake and the breathtaking mountain scenery, this 9-day adventure showcases the best of Mongolia's natural beauty.</p>
+            
+            <p>Ride through changing terrains, experience the nomadic lifestyle, and discover hidden gems that few tourists ever see. This tour is perfect for riders looking for a balance of challenge and comfort, with a total distance of approximately 1,790 kilometers covered over 9 days.</p>
+            
+            <div class="tour-highlights">
+                <div class="highlight-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Total Distance</h3>
+                    <p>1,790 km</p>
+                </div>
+                <div class="highlight-item">
+                    <i class="far fa-calendar-alt"></i>
+                    <h3>Duration</h3>
+                    <p>9 Days</p>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-mountain"></i>
+                    <h3>Terrain</h3>
+                    <p>Steppe, Mountain, Forest</p>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-campground"></i>
+                    <h3>Accommodation</h3>
+                    <p>Ger Camps & Hotels</p>
+                </div>
+            </div>
+            
+            <p>Our experienced local guides will lead you through remote areas while our support team ensures your comfort and safety. All meals, accommodations, and motorcycle rentals are included in this all-inclusive adventure package.</p>
+        </section>
+        
+        <!-- Day by Day Slideshow -->
+        <section class="tour-days-container">
+            <h2>Day by Day Itinerary</h2>
+            
+            <div class="day-slideshow">
+                <div class="day-controls">
+                    <div class="day-nav">
+                        <button class="day-btn prev-day"><i class="fas fa-chevron-left"></i> Previous</button>
+                        <button class="day-btn next-day">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="day-counter">
+                        <span id="current-day">1</span>/9
+                    </div>
+                </div>
+                
+                <div class="day-indicators">
+                    <span class="day-dot active" onclick="goToDay(0)"></span>
+                    <span class="day-dot" onclick="goToDay(1)"></span>
+                    <span class="day-dot" onclick="goToDay(2)"></span>
+                    <span class="day-dot" onclick="goToDay(3)"></span>
+                    <span class="day-dot" onclick="goToDay(4)"></span>
+                    <span class="day-dot" onclick="goToDay(5)"></span>
+                    <span class="day-dot" onclick="goToDay(6)"></span>
+                    <span class="day-dot" onclick="goToDay(7)"></span>
+                    <span class="day-dot" onclick="goToDay(8)"></span>
+                </div>
+                
+                <div class="day-slides">
+                    <!-- Day 1 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/10_resized.jpg" alt="Elsen Tasarkhai Sand Dunes">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">1</div>
+                                <div>
+                                    <h3 class="day-title">Ulaanbaatar → Elsen Tasarkhai → Tsetserleg</h3>
+                                    <span class="day-distance">270 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>We begin our journey early in the morning, leaving Ulaanbaatar behind and heading west. Our first major stop is at the stunning Elsen Tasarkhai sand dunes, a miniature Gobi in the middle of the steppe. After lunch and exploration time at the dunes, we continue to the charming town of Tsetserleg, nestled in the mountains.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Morning briefing and motorcycle handover</li>
+                                <li>Explore the Elsen Tasarkhai sand dunes</li>
+                                <li>Camel riding opportunity (optional)</li>
+                                <li>Overnight in comfortable ger camp near Tsetserleg</li>
+                                <li>Welcome dinner with traditional Mongolian cuisine</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 2 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/11_resized.jpg" alt="White Lake">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">2</div>
+                                <div>
+                                    <h3 class="day-title">Tsetserleg → Terkhiin Tsagaan Lake → Khorgo</h3>
+                                    <span class="day-distance">200 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Today we ride through stunning mountain scenery to reach the breathtaking Terkhiin Tsagaan Lake (White Lake). This freshwater lake is surrounded by extinct volcanoes and lush meadows, offering some of the most picturesque views in Mongolia. We'll spend time exploring the lake area and continue to Khorgo, an extinct volcano with unique lava formations.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Morning ride through mountainous terrain</li>
+                                <li>Picnic lunch with panoramic views of White Lake</li>
+                                <li>Explore the Khorgo volcano crater</li>
+                                <li>Evening fishing opportunity (seasonal)</li>
+                                <li>Overnight in lakeside ger camp</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 3 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/12_resized.jpg" alt="Khuvsgul Lake">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">3</div>
+                                <div>
+                                    <h3 class="day-title">Khorgo → Khatgal (Khuvsgul Lake)</h3>
+                                    <span class="day-distance">300 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Our longest riding day takes us north through diverse landscapes to reach Mongolia's crown jewel - the crystal-clear Khuvsgul Lake. This sacred lake contains about 1% of the world's fresh water and is surrounded by mountains and forests. We arrive at the small town of Khatgal, the gateway to the lake.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Full day of varied riding terrain</li>
+                                <li>Visit traditional nomadic families en route</li>
+                                <li>First glimpse of Mongolia's "Blue Pearl" - Khuvsgul Lake</li>
+                                <li>Evening bonfire by the lakeshore</li>
+                                <li>Overnight in comfortable lakeside cabins</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 4 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/13_resized.jpg" alt="Khatgal Resort">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">4</div>
+                                <div>
+                                    <h3 class="day-title">Khatgal (Rest Day)</h3>
+                                    <span class="day-distance">Local exploration</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Today is a well-deserved rest day at Khuvsgul Lake. Take time to relax, enjoy the pristine nature, or engage in various optional activities. The area offers beautiful hiking trails through forests, boat rides on the crystal-clear water, and opportunities to interact with local Tsaatan reindeer herders who inhabit the region.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Free morning to rest and rejuvenate</li>
+                                <li>Optional boat trip on Khuvsgul Lake</li>
+                                <li>Hiking opportunities in the surrounding forests</li>
+                                <li>Visit to local Tsaatan reindeer herder families (optional)</li>
+                                <li>Second night in lakeside accommodation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 5 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/14_resized.jpg" alt="Northern Shore of Khuvsgul">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">5</div>
+                                <div>
+                                    <h3 class="day-title">Khatgal → Khankh (Northern shore)</h3>
+                                    <span class="day-distance">150 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Today we ride along the western shore of Khuvsgul Lake, following scenic trails with panoramic vistas of the water and surrounding mountains. The ride takes us to Khankh, a remote settlement near the Russian border. This less-visited part of the lake offers unspoiled natural beauty and tranquility.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Breathtaking shoreline riding with lake views</li>
+                                <li>Stops at pristine beaches for swimming (summer)</li>
+                                <li>Wildlife spotting opportunities (deer, rare birds)</li>
+                                <li>Visit to ancient shamanic rock inscriptions</li>
+                                <li>Overnight in basic but comfortable ger camp</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 6 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/15_resized.jpg" alt="Renchinlkhumbe Valley">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">6</div>
+                                <div>
+                                    <h3 class="day-title">Khankh → Renchinlkhumbe → Ulaan-Uul</h3>
+                                    <span class="day-distance">250 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Today we venture into the remote Darkhad Depression, home to some of Mongolia's most isolated communities. We'll ride through the challenging but beautiful terrain to the settlements of Renchinlkhumbe and Ulaan-Uul. This area is known for its traditional shamanic culture and pristine wilderness.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Technical riding through mountain passes</li>
+                                <li>Visit to a local shaman (if available)</li>
+                                <li>Lunch with nomadic family in Renchinlkhumbe</li>
+                                <li>Cross several river fords (support vehicle assistance)</li>
+                                <li>Overnight in community-run guesthouse</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 7 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/16_resized.jpg" alt="Bulgan Province">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">7</div>
+                                <div>
+                                    <h3 class="day-title">Ulaan-Uul → Bulgan Province</h3>
+                                    <span class="day-distance">270 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Leaving the remote northern regions behind, we begin our journey southward through the scenic landscapes of Bulgan Province. This area is characterized by rolling hills, forested mountains, and open grasslands where nomadic herders tend to their animals. We'll stay in a comfortable ger camp in the heart of Bulgan.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Forest trail riding through pine and larch forests</li>
+                                <li>Visit to ancient Buddhist monastery ruins</li>
+                                <li>Traditional archery demonstration</li>
+                                <li>Scenic picnic lunch in mountain meadow</li>
+                                <li>Overnight in tourist ger camp with hot showers</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 8 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/17_resized.jpg" alt="Khustai National Park">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">8</div>
+                                <div>
+                                    <h3 class="day-title">Bulgan → Khustai National Park</h3>
+                                    <span class="day-distance">250 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Today's ride brings us to Khustai National Park, home to the successfully reintroduced Przewalski's wild horses (takhi). These are the last truly wild horses on Earth, and the park offers an excellent opportunity to observe them in their natural habitat. The diverse steppe ecosystem also supports many other wildlife species.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Morning ride with mountain backdrop</li>
+                                <li>Wildlife spotting in Khustai National Park</li>
+                                <li>Guided tour with park ranger to find wild horses</li>
+                                <li>Traditional barbecue dinner (khorkhog)</li>
+                                <li>Final night camping experience with farewell celebration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Day 9 -->
+                    <div class="day-slide">
+                        <div class="day-image">
+                            <img src="tour/18_resized.jpg" alt="Return to Ulaanbaatar">
+                        </div>
+                        <div class="day-content">
+                            <div class="day-header">
+                                <div class="day-number">9</div>
+                                <div>
+                                    <h3 class="day-title">Khustai National Park → Ulaanbaatar</h3>
+                                    <span class="day-distance">100 km</span>
+                                </div>
+                            </div>
+                            <div class="day-description">
+                                <p>Our final day of riding takes us back to Ulaanbaatar. We'll have a relaxed morning at Khustai with one last chance to observe wildlife before taking a leisurely ride back to the capital. Upon arrival, we'll return the motorcycles, check into our hotel, and celebrate our amazing journey with a special farewell dinner in the city.</p>
+                            </div>
+                            <ul class="day-activities">
+                                <li>Morning wildlife viewing opportunity</li>
+                                <li>Easy ride back to Ulaanbaatar</li>
+                                <li>Return of motorcycles and equipment</li>
+                                <li>Free time for souvenir shopping</li>
+                                <li>Farewell dinner at top Mongolian restaurant</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Booking Section -->
+        <section class="booking-section">
+            <h2>Ready for the Adventure of a Lifetime?</h2>
+            <p>Our Desert & Mountain Tour runs from May to September. Group sizes are limited to ensure a personalized experience.</p>
+            <a href="index.html#contact" class="booking-cta">Book This Tour</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <!-- Company Information (Left) -->
+            <div class="footer-company">
+                <div class="footer-logo">Stepperiders</div>
+                <p>Experience authentic Mongolian wilderness through our unparalleled motorbike tours. Adventure awaits in the land of endless horizons.</p>
+                <div class="footer-info">
+                    <div>
+                        <i>📍</i>
+                        <span>123 Sukhbaatar Street, Ulaanbaatar, Mongolia</span>
+                    </div>
+                    <div>
+                        <i>📞</i>
+                        <span>+976 1234 5678</span>
+                    </div>
+                    <div>
+                        <i>📧</i>
+                        <span>info@stepperiders.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media Icons (Middle) -->
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-facebook-f"></i> 
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-snapchat-ghost"></i>
+                    </a>
+                </div>
+                <p>Follow our adventures on social media for the latest updates, photos, and stories from the Mongolian wilderness.</p>
+            </div>
+            
+            <!-- Contact Information by Region (Right) -->
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="regional-contacts">
+                    <div class="region-contact">
+                        <h4>From Asia</h4>
+                        <div class="contact-item">
+                            <i>📱</i>
+                            <span>+46 73 666 7779</span>
+                        </div>
+                        <div class="contact-item">
+                            <i>📧</i>
+                            <span>bilguun.se@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+        
+        // Day slideshow functionality
+        let currentDayIndex = 0;
+        const totalDays = 9;
+        const slideContainer = document.querySelector('.day-slides');
+        const dayDots = document.querySelectorAll('.day-dot');
+        const currentDayDisplay = document.getElementById('current-day');
+        
+        // Initialize the slideshow
+        updateSlidePosition();
+        
+        // Event listeners for controls
+        document.querySelector('.prev-day').addEventListener('click', () => {
+            navigateDay(-1);
+        });
+        
+        document.querySelector('.next-day').addEventListener('click', () => {
+            navigateDay(1);
+        });
+        
+        // Navigate to previous or next day
+        function navigateDay(direction) {
+            currentDayIndex = (currentDayIndex + direction + totalDays) % totalDays;
+            updateSlidePosition();
+        }
+        
+        // Go to specific day
+        function goToDay(index) {
+            currentDayIndex = index;
+            updateSlidePosition();
+        }
+        
+        // Update slide position and indicators
+        function updateSlidePosition() {
+            // Update slides position
+            slideContainer.style.transform = `translateX(-${currentDayIndex * 100}%)`;
+            
+            // Update current day indicator
+            currentDayDisplay.textContent = currentDayIndex + 1;
+            
+            // Update dots
+            dayDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentDayIndex);
+            });
+        }
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                navigateDay(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateDay(1);
+            }
+        });
+        
+        // Add scroll event to change navbar background
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
