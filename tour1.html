@@ -317,6 +317,90 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
+        .day-controls {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.day-btn {
+    font-size: 0.9rem;
+}
+
+.day-indicators {
+    flex-wrap: wrap;
+}
+
+/* Fix for day headers */
+.day-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.day-number {
+    flex-shrink: 0;
+}
+
+.day-title {
+    word-break: break-word;
+    hyphens: auto;
+}
+
+/* Footer responsive grid */
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px 20px;
+}
+
+@media (min-width: 768px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+    .tour-detail-header h1 {
+        font-size: 2rem;
+    }
+    
+    .tour-detail-header p {
+        font-size: 1rem;
+    }
+    
+    .tour-highlights {
+        gap: 15px;
+    }
+    
+    .highlight-item {
+        min-width: 100%;
+    }
+    
+    .day-controls {
+        justify-content: center;
+    }
+    
+    .day-counter {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .day-title {
+        font-size: 1.2rem;
+    }
+    
+    .booking-section {
+        padding: 40px 20px;
+    }
+}
     </style>
 </head>
 <body>
